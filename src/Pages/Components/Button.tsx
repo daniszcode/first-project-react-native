@@ -7,12 +7,14 @@ import {
 } from "react-native";
 import { styles } from "../Home/styles";
 
-type ButtonProps = TouchableOpacityProps;
+interface ButtonProps extends TouchableOpacityProps {
+  title: string;
+}
 
-const Button = ({ ...rest }: ButtonProps) => (
+const Button = ({ title, ...rest }: ButtonProps) => (
   <View>
     <TouchableOpacity style={styles.button} {...rest}>
-      <Text style={styles.p}> Adicionar </Text>
+      <Text style={styles.p}> {title} </Text>
     </TouchableOpacity>
   </View>
 );
