@@ -3,21 +3,30 @@ import { View, Text, TextInput, FlatList } from "react-native";
 import React, { useState, useEffect } from "react";
 import { Button } from "../Components/Button";
 import { SkillsCard } from "../Components/SkillsCard";
+
+interface SkillData {
+  id: string;
+  name: string;
+}
+
 const Home = () => {
   const [newSkill, setNewSkill] = useState("");
-  const [mySkill, setMySkill] = useState([]);
+  const [mySkill, setMySkill] = useState<SkillData[]>([]);
   const [greeting, setGreeting] = useState("");
 
   function handleAddNewSkill() {
-    setMySkill((oldState) => [...oldState, newSkill]);
+    const data = {
+      id: String(new Date().getTime()),
+      name: newSkill,
+    };
+    setMySkill((oldState) => [...oldState, data]);
   }
 
   useEffect(() => {
-    const getOurs = new Date().getHours();
-
-    getOurs >= "00" && getOurs <= "11"
-      ? setGreeting("Bom dia")
-      : setGreeting("Boa tarde");
+    // const getOurs = new Date().getHours();
+    // getOurs >= "00" && getOurs <= "11"
+    //   ? setGreeting("Bom dia")
+    //   : setGreeting("Boa tarde");
   }, [greeting]);
 
   return (
@@ -33,12 +42,12 @@ const Home = () => {
         onChangeText={setNewSkill}
       />
 
-      <Button onPress={handleAddNewSkill} />
+      <Button onPress={handleAddNewSkill} activeOpacity={0.7} />
 
       <FlatList
         data={mySkill}
-        keyExtractor={(item) => item}
-        renderItem={({ item }) => <SkillsCard skill={item} />}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => <SkillsCard skill={item.name} />}
       />
     </View>
   );
