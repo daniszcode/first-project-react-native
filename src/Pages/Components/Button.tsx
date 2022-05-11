@@ -13,7 +13,7 @@ interface ButtonProps extends TouchableOpacityProps {
 
 const Button = ({ title, ...rest }: ButtonProps) => (
   <View>
-    <TouchableOpacity style={styles.button} {...rest}>
+    <TouchableOpacity style={styles.button} {...rest} activeOpacity={0.7}>
       <Text style={styles.p}> {title} </Text>
     </TouchableOpacity>
   </View>

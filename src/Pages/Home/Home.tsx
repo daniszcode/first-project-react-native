@@ -42,7 +42,7 @@ const Home = () => {
         onChangeText={setNewSkill}
       />
 
-      <Button onPress={handleAddNewSkill} activeOpacity={0.7} />
+      <Button title="Adicionar" onPress={handleAddNewSkill} />
 
       <FlatList
         data={mySkill}
