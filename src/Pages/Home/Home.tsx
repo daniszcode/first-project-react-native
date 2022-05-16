@@ -14,6 +14,8 @@ const Home = () => {
   const [mySkill, setMySkill] = useState<SkillData[]>([]);
   const [greeting, setGreeting] = useState("");
 
+  // console.log("mySkill", mySkill, "newSkill", newSkill);
+
   function handleAddNewSkill() {
     const data = {
       id: String(new Date().getTime()),
@@ -23,8 +25,8 @@ const Home = () => {
   }
 
   function handleRemoveSkill(id: string) {
-    setMySkill((oldState) =>
-      oldState.filter((skillClicked) => skillClicked.id !== id)
+    setMySkill((skill) =>
+      skill.filter((skillClicked) => skillClicked.id !== id)
     );
   }
 
