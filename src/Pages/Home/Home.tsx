@@ -3,7 +3,6 @@ import { View, Text, TextInput, FlatList } from "react-native";
 import React, { useState, useEffect } from "react";
 import { Button } from "../Components/Button";
 import { SkillsCard } from "../Components/SkillsCard";
-
 interface SkillData {
   id: string;
   name: string;
@@ -12,7 +11,8 @@ interface SkillData {
 const Home = () => {
   const [newSkill, setNewSkill] = useState("");
   const [mySkill, setMySkill] = useState<SkillData[]>([]);
-  const [greeting, setGreeting] = useState("");
+  // const [greeting, setGreeting] = useState("");
+  const [counter, setCounter] = useState(0);
 
   // console.log("mySkill", mySkill, "newSkill", newSkill);
 
@@ -31,16 +31,20 @@ const Home = () => {
   }
 
   useEffect(() => {
-    // const getOurs = new Date().getHours();
-    // getOurs >= "00" && getOurs <= "11"
-    //   ? setGreeting("Bom dia")
-    //   : setGreeting("Boa tarde");
-  }, [greeting]);
+    setCounter(mySkill.length);
+  }, [mySkill]);
+
+  // useEffect(() => {
+  //   // const getOurs = new Date().getHours();
+  //   // getOurs >= "00" && getOurs <= "11"
+  //   //   ? setGreeting("Bom dia")
+  //   //   : setGreeting("Boa tarde");
+  // }, [greeting]);
 
   return (
     <View style={styles.container}>
       <Text style={[styles.text, { fontSize: 25, marginVertical: 50 }]}>
-        {greeting}
+        Quantidade de tarefas: {counter}
       </Text>
       <Text style={styles.text}>Academy TO-DO</Text>
       <TextInput
