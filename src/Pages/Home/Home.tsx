@@ -42,7 +42,7 @@ const Home = () => {
       <Text style={[styles.text, { fontSize: 25, marginVertical: 50 }]}>
         {greeting}
       </Text>
-      <Text style={styles.text}>Hello World</Text>
+      <Text style={styles.text}>Academy TO-DO</Text>
       <TextInput
         style={styles.input}
         placeholder="Digits Aqua"
