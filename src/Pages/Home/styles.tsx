@@ -36,6 +36,8 @@ const styles = StyleSheet.create({
     fontFamily: "Helvetica Now Display",
   },
   buttonSkills: {
+    flex: 3,
+    justifyContent: "center",
     backgroundColor: "#FFFFFF",
     padding: 15,
     borderRadius: 50,
@@ -52,6 +54,27 @@ const styles = StyleSheet.create({
     color: "rgba(73, 226, 149, 1)",
     fontSize: 22,
     fontWeight: "bold",
+  },
+  buttonStates: {
+    flex: 1,
+    color: "rgba(73, 226, 149, 1)",
+    alignItems: "center",
+    backgroundColor: "#FFFFFF",
+    padding: 8,
+    borderRadius: 50,
+    margin: 10,
+    shadowColor: "#1F2D27",
+    shadowOpacity: 0,
+    shadowOffset: {
+      width: 28,
+      height: 64,
+    },
+    width: 9,
+    height: 35,
+  },
+  box: {
+    flexDirection: "row",
+    margin: 10,
   },
 });
 

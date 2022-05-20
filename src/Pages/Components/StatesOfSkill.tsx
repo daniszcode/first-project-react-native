@@ -4,9 +4,9 @@ import { styles } from "../Home/styles";
 
 interface StatesOfSkillProps extends TouchableOpacityProps {}
 
-const Completed = () => (
+const Completed = ({ ...rest }: StatesOfSkillProps) => (
   <>
-    <TouchableOpacity style={styles.buttonStates}>
+    <TouchableOpacity style={styles.buttonStates} {...rest}>
       <Text>✅</Text>
     </TouchableOpacity>
   </>

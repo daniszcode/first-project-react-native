@@ -3,6 +3,8 @@ import { View, Text, TextInput, FlatList } from "react-native";
 import React, { useState, useEffect } from "react";
 import { Button } from "../Components/Button";
 import { SkillsCard } from "../Components/SkillsCard";
+import { Completed, Unfinished } from "../Components/StatesOfSkill";
+
 interface SkillData {
   id: string;
   name: string;
@@ -29,6 +31,15 @@ const Home = () => {
       skill.filter((skillClicked) => skillClicked.id !== id)
     );
   }
+
+  // function markSkillCompleted() {
+  //   mySkill.map((objeto) => {
+  //     console.log("objeto", (objeto.name = "carioca"));
+  //     objeto.name = "carioca";
+  //   });
+  // }
+
+  console.log("myskill", mySkill);
 
   useEffect(() => {
     setCounter(mySkill.length);
@@ -60,10 +71,11 @@ const Home = () => {
         data={mySkill}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <SkillsCard
-            onPress={() => handleRemoveSkill(item.id)}
-            skill={item.name}
-          />
+          <View style={styles.box}>
+            <SkillsCard skill={item.name} />
+            {/* <Completed onPress={markSkillCompleted} /> */}
+            <Unfinished onPress={() => handleRemoveSkill(item.id)} />
+          </View>
         )}
       />
     </View>
