@@ -15,7 +15,7 @@ const Home = () => {
   const [mySkill, setMySkill] = useState<SkillData[]>([]);
   // const [greeting, setGreeting] = useState("");
   const [counter, setCounter] = useState(0);
-
+  const [skillComplet, setComplet] = useState("carioca");
   // console.log("mySkill", mySkill, "newSkill", newSkill);
 
   function handleAddNewSkill() {
@@ -32,12 +32,19 @@ const Home = () => {
     );
   }
 
-  // function markSkillCompleted() {
-  //   mySkill.map((objeto) => {
-  //     console.log("objeto", (objeto.name = "carioca"));
-  //     objeto.name = "carioca";
-  //   });
-  // }
+  const markSkillCompleted = () => {
+    mySkill.map((objeto) => {
+      console.log("objeto", objeto.name);
+      console.log("objeto trocado", (objeto.name = "Done ✅"));
+      objeto.name = "Done ✅";
+    });
+  };
+
+  useEffect(() => {
+    if (markSkillCompleted) {
+      markSkillCompleted();
+    }
+  }, []);
 
   console.log("myskill", mySkill);
 
@@ -55,7 +62,7 @@ const Home = () => {
   return (
     <View style={styles.container}>
       <Text style={[styles.text, { fontSize: 25, marginVertical: 50 }]}>
-        Quantidade de tarefas: {counter}
+        Number Of Tasks: {counter}
       </Text>
       <Text style={styles.text}>Academy TO-DO</Text>
       <TextInput
@@ -65,7 +72,7 @@ const Home = () => {
         onChangeText={setNewSkill}
       />
 
-      <Button title="Adicionar" onPress={handleAddNewSkill} />
+      <Button title="Add" onPress={handleAddNewSkill} />
 
       <FlatList
         data={mySkill}
@@ -73,7 +80,7 @@ const Home = () => {
         renderItem={({ item }) => (
           <View style={styles.box}>
             <SkillsCard skill={item.name} />
-            {/* <Completed onPress={markSkillCompleted} /> */}
+            <Completed onPress={markSkillCompleted} />
             <Unfinished onPress={() => handleRemoveSkill(item.id)} />
           </View>
         )}
